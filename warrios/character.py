@@ -26,14 +26,15 @@ class Character:
     def attack(self, character):
         random_number = random.randint(1,100)
         hits = self.current_move["accuracy"] >= random_number
-        print(f"{self.name} uses {self.current_move['name']}")
+        print(f"{self.name.capitalize()} uses {self.current_move['name']}!")
         if hits:
             character.receive_damage(self.current_move["power"])
-            print(f"Hits {character.name} and caused {self.current_move['power']} damage")
+            print(f"Hits {character.name.capitalize()} and caused {self.current_move['power']} damage")
         else:
-            print(f"{self.name} failed to hit {character.name} and didn't couse any damage")
+            print(f"{self.name} failed to hit {character.name} and didn't cause any damage")
     
     def increase_experience(self, character):
+        print(character.experience)
         self.experience += character.experience * 0.2
 
 

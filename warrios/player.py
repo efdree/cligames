@@ -1,14 +1,16 @@
 from catalog.characters import Catalog as Characters
 from catalog.moves import Catalog as Moves
+from character import Character
+from get_input import get_with_options
 import random
 
 class Player:
-    def __init__(self, name, character_type, character_name):
+    def __init__(self, name, character_name, character_type):
         self.name = name
-        self.character = Characters.new(character_name, character_type)
+        self.character = Character(character_type, character_name)
     
     def select_move(self):
-        move = input("Select a move to attack", self.character.moves)
+        move = get_with_options("Select a move to attack", self.character.moves)
         self.character.current_move = Moves.MOVES[move]
 
 class Bot(Player):
